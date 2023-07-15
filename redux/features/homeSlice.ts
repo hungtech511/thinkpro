@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getUserList } from "../actions/getHome";
+import { getHomePage } from "../actions/getHome";
 
 type HomePageState = {
   data: any;
@@ -20,15 +20,15 @@ export const homepage = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getUserList.pending, (state) => {
+    builder.addCase(getHomePage.pending, (state) => {
       state.isLoading = true;
     }),
-      builder.addCase(getUserList.fulfilled, (state, { payload }) => {
+      builder.addCase(getHomePage.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.data = payload.data;
       }),
-      builder.addCase(getUserList.rejected, (state:any, { payload }) => {
+      builder.addCase(getHomePage.rejected, (state:any, { payload }) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.errorMessage = payload;

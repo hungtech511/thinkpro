@@ -5,7 +5,7 @@ import { AxiosError } from "axios";
 
 
  
-export const getUserList = createAsyncThunk('page/home-page', async (page, { rejectWithValue }) => {
+export const getHomePage = createAsyncThunk('page/home-page', async (page, { rejectWithValue }) => {
   try {
     const data = await query.HOME_PAGE();
     return data

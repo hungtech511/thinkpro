@@ -1,22 +1,16 @@
-"use client"
-import { getUserList } from "@/redux/actions/getHome";
+"use client";
+import { getHomePage } from "@/redux/actions/getHome";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-
-
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Home() {
+  const user = useSelector<RootState, any>((state) => state.homepage.data);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const user = useSelector<RootState, any>(state => state.homepage.data)
-  const dispatch = useDispatch<AppDispatch>()
+  useEffect(() => {
+    dispatch(getHomePage());
+  }, []);
 
-  useEffect(() =>{
-    dispatch(getUserList())
-  },[])
-
-  return <>
-  hohoh
-  </>
+  return <div className="container mx-auto">hohoh</div>;
 }
-
