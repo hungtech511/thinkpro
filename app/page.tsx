@@ -12,5 +12,5 @@ export default function Home() {
     dispatch(getHomePage());
   }, []);
 
-  return <div className="container mx-auto">hohoh</div>;
+  return <div className="container">hohoh</div>;
 }

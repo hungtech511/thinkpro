@@ -1,11 +1,15 @@
+@import "./icons.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --color-primary: 0 101 238;
+    --color-secondary: 111 114 185;
+    --b1: 246 249 252;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +20,3 @@
   }
 }
 
-body {
-
-}
