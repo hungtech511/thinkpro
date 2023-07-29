@@ -1,30 +1,16 @@
-"use client"
+"use client";
+import { getHomePage } from "@/redux/actions/getHome";
+import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
-
-
-const axios = require("axios");
-
-const instance = axios.create({
-  baseURL: "https://thinkpro.vn/",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
-});
-
-
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Home() {
+  const user = useSelector<RootState, any>((state) => state.homepage.data);
+  const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() =>{
-      const getData = async () =>{
-        let res = await instance.get("front-store/v3/home-setting");
-        console.log(res);
-        
-      }
-      getData()
-  },[])
+  useEffect(() => {
+    dispatch(getHomePage());
+  }, []);
 
-  return <>
-  hohoh
-  </>
+  return <div className="container">hohoh</div>;
 }
-
