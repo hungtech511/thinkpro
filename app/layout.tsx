@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 import Link from "next/link";
 import Head from "next/head";
 import Script from "next/script";
+import SearchInput from "@/components/SearchInput";
 
 export default function RootLayout({
   children,
@@ -19,10 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css"
-          rel="stylesheet"
-        />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" />
       </Head>
 
       <body suppressHydrationWarning={true}>
@@ -36,7 +34,7 @@ export default function RootLayout({
                   alt="logo"
                 />
               </Link>
-              <div className="the-input-search ml-6">search input</div>
+              <SearchInput />
               <div className="ml-auto desktop:ml-6 flex items-center space-x-3">
                 <Link
                   aria-label="Gọi hỗ trợ bằng số điện thoại 1900.63.3579"
@@ -112,7 +110,14 @@ export default function RootLayout({
                   </span>
                 </Link>
               </div>
-              <div className="ml-0 desktop:ml-auto">cart</div>
+              <div className="ml-0 desktop:ml-auto">
+                <Link
+                  className="t-button  btn-cart t-button--icon t-button--md t-button--solid"
+                  href="/gio-hang"
+                >
+                  <i className="i-semi-cart"></i>
+                </Link>
+              </div>
             </div>
           </header>
           {children}

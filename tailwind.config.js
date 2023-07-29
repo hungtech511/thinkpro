@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+
 module.exports = {
   content: [
     "./node_modules/flowbite-react/**/*.js",
@@ -6,7 +8,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin")
+],
   theme: {
     transitionDuration: {
       DEFAULT: '250ms'
