@@ -1,8 +1,9 @@
-import styles from "./SearchInput.module.scss";
+'use client'
+import Style from "./SearchInput.module.scss";
 
 const SearchInput = () => {
   return (
-    <div className={styles.inputSearch + " ml-6"}>
+    <div className={Style.inputSearch + " ml-6"}>
       <div
         data-popover-target="popover-click"
         data-popover-trigger="click"
@@ -18,6 +19,8 @@ const SearchInput = () => {
           type="text"
           value=""
           className="t-text-field"
+          onChange={() => console.log('')
+          }
         />
       </div>
       <div

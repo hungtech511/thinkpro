@@ -23,7 +23,7 @@ module.exports = {
     },
     fontSize: {
       sm: '0.8rem',
-      md:'0.778rem',
+      md:['14px', '150%'],
       base: '1rem',
       xl: '1.25rem',
       '2xl': '1.563rem',
@@ -37,6 +37,7 @@ module.exports = {
     colors: {
       primary: 'rgb(var(--color-primary) / <alpha-value>)',
       base: {
+        DEFAULT: '#fff',
         100: 'rgb(var(--b1) / <alpha-value>)'
       }
     },
@@ -48,5 +49,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
 };
