@@ -1,0 +1,9 @@
+.section-promotion {
+    .slick-track {
+      .slick-slide {
+        &:not(:first-child) {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
