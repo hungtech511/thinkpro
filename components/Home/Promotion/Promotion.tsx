@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Promotion } from "@/interfaces/IProductPromotion";
+import { IPromotion } from "@/interfaces/IProductPromotion";
 import Link from "next/link";
 
 import { formatDate, formatNumber } from "@/utils/formatInput";
@@ -12,7 +12,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import "./Promotion.scss";
 
 interface Promotions {
-  promotions: Promotion[];
+  promotions: IPromotion[];
 }
 
 const Promotion: React.FC<Promotions> = ({ promotions }) => {

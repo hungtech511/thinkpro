@@ -87,7 +87,7 @@ const PromotionHighlight: React.FC<PromotionHighlight> = ({
                     className="t-product-item"
                     href={`${product.shared_url}`}
                   >
-                    <ProductItem product={product}></ProductItem>
+                    <ProductItem show_tags product={product}></ProductItem>
                   </Link>
                 </SwiperSlide>
               );

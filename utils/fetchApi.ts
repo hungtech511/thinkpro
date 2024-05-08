@@ -1,3 +1,5 @@
+import NotFound from "@/app/not-found";
+
 export async function getData(query: string) {
   const res = await fetch("https://thinkpro.vn/" + query, {
     cache: "no-store",

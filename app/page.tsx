@@ -6,9 +6,15 @@ import { Product } from "@/interfaces/IProduct";
 import Promotion from "@/components/Home/Promotion/Promotion";
 import PromotionHighlight from "@/components/Home/PromotionHighlight/PromotionHighlight";
 import PreOrder from "@/components/Home/PreOrder/PreOrder";
+import SuggestProduct from "@/components/Home/SuggestProduct/SuggestProduct";
 
 export default async function Home() {
   const result = await getData(query.HOME_PAGE);
+
+  const products = await fetch("https://thinkpro.vn/catalog-fs/product-items?keyword=&current_page=1&per_page=10&sort=4&category=laptop").then(res => {
+    return res.json()
+  })
+  // console.log(products);
 
   const {
     banner,
@@ -25,7 +31,7 @@ export default async function Home() {
     top_keywords,
   } = result.data;
 
-  // console.log(pre_order);
+  // console.log(suggestion);
 
   return (
     <main className="bg-base-100">
@@ -122,20 +128,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="mt-12">
-          <section className="section-usp">
-            <div className="px-4 py-8 tablet:p-0 bg-base-100">
-              <div className="flex items-center space-x-4">
-                <h2 className="text-h4 tablet:text-h2 font-semibold">
-                  Chọn ThinkPro?
-                </h2>
-                <span className="text-h3 text-base-content-300 font-semibold">
-                  Chọn sự Thoải mái, An tâm vì có sự Tận tâm.
-                </span>
-              </div>
-            </div>
-          </section>
-        </div>
+        <SuggestProduct products={products} suggestProduct={suggestion}></SuggestProduct>
       </div>
     </main>
   );

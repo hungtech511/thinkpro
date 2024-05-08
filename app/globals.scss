@@ -506,6 +506,10 @@ h6 {
     line-height: 150%;
     white-space: nowrap;
 
+    &:nth-child(3){
+      margin-left:0;
+    }
+
     &.t-tag--rounded {
       border-radius: 100px;
     }
@@ -825,6 +829,12 @@ h6 {
     height: .75rem;
     width: .75rem
   }
+  
+  .t-product-list__container{
+    grid-gap: 0.75rem;
+    display: grid;
+    gap: 0.75rem;
+  }
 
   .t-flex-gap {
     --gap-x: 0;
@@ -844,7 +854,8 @@ h6 {
     display: flex;
     flex-wrap: wrap;
     margin-left: var(--gap-x-negative);
-    margin-top: var(--gap-x-negative)
+    margin-top: var(--gap-x-negative);
+    gap:8px;
   }
 
   .t-flex-gap__wrapper>* {

@@ -6,6 +6,8 @@ import ImageComponent from "../Image/ImageComponent";
 
 interface ProductItemProps {
   product: Product;
+  show_tags?: boolean;
+  show_specs?: boolean;
 }
 
 interface CountdownTimerProps {
@@ -20,7 +22,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate, suppressHydrationWarning }) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
@@ -63,12 +65,11 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate, suppressHyd
   );
 };
 
-export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+export const ProductItem: React.FC<ProductItemProps> = ({ product,show_tags, show_specs }) => {
   return (
     <>
-      <div className="absolute top-4 left-4 z-[1] flex items-center space-x-1">
         {product?.applied_channel?.type === "PRE_ORDER" && (
-          <>
+          <div className="absolute top-4 left-4 z-[1] flex items-center space-x-1">
             <div className="flex flex-col items-start space-y-1">
               <div className="t-tag inline-flex t-tag--solid t-tag--md !bg-tertiary !text-tertiary-content">
                 <span>Còn {product?.applied_channel?.purchase_limit} suất</span>
@@ -78,9 +79,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
                     suppressHydrationWarning 
                   ></CountdownTimer>
             </div>
-          </>
+          </div>
         )}
-      </div>
       <div className="relative">
         <div className="t-product-item__image">
           <ImageComponent
@@ -117,24 +117,33 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             );
           })}
         </div>
-        <div className="t-flex-gap mt-2">
-          <div className="t-flex-gap__wrapper">
-            {product.model_value.spec.split(", ").map((spec, index) => {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    marginLeft: index === 0 ? 0 : 8,
-                    marginTop: 8,
-                  }}
-                  className="t-tag t-tag--solid t-tag--md"
-                >
-                  {spec}
-                </div>
-              );
-            })}
+        {
+          show_tags && (
+            <div className="t-flex-gap mt-2">
+            <div className="t-flex-gap__wrapper">
+              {product.model_value.spec.split(", ").map((spec, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="t-tag t-tag--solid t-tag--md"
+                  >
+                    {spec}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+          )
+        }
+        <div className="t-flex-gap mt-2"><div className="t-flex-gap__wrapper"></div></div>
+        {
+          show_specs && (
+            <>
+            <hr className="my-3" />
+            <div className="t-product-item__specs" dangerouslySetInnerHTML={{ __html: product.specs }} ></div>
+            </>
+          )
+        }
         {product.has_gift && (
           <>
             <hr className="mt-3" />

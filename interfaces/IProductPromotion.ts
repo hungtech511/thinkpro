@@ -1,4 +1,4 @@
-export interface Promotion{
+export interface IPromotion{
   map(arg0: (product: any, index: any) => import("react").JSX.Element): unknown;
      id: number;
     title: string;
