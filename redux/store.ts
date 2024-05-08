@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import homepage from "./features/homeSlice";
+
 
 export const store = configureStore({
   reducer: {
-    homepage:homepage,
+    // homepage:homepage,
   },
   devTools: process.env.NODE_ENV !== "production",
 });
